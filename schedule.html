@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Розклад занять </title>
+    <style>
+        :root{--brand:#2c3e50;--accent:#3498db;--muted:#6c757d}
+        body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:18px;background:#f5f7fa;color:#222;line-height:1.6}
+        header{background:var(--brand);color:#fff;padding:18px;border-radius:6px;text-align:center;margin-bottom:18px}
+        header h1{margin:0 0 6px;font-size:1.5rem}
+        header p{margin:6px 0 0;color:#e6eef8;font-size:0.95rem}
+        main{max-width:1100px;margin:18px auto;background:#fff;padding:18px;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+        h2{margin:0 0 16px;color:var(--brand);border-bottom:3px solid var(--accent);padding-bottom:8px}
+        
+        .grid{display:grid;grid-template-columns:1fr;gap:28px}
+        @media(min-width:900px){.grid{grid-template-columns:1fr 360px}}
+        
+        .table-wrap{overflow:auto;border-radius:6px;border:1px solid #e1e4e8;background:#fff}
+        .schedule-table{border-collapse:collapse;width:100%;min-width:600px}
+        .schedule-table caption{caption-side:top;padding:10px 14px;font-weight:700;color:var(--brand);font-size:0.9rem}
+        .schedule-table th{background:#f1f5f9;padding:12px;text-align:left;border:1px solid #e6eef8;font-weight:700;color:var(--brand)}
+        .schedule-table td{padding:12px;border:1px solid #eef3f7;text-align:left}
+        .schedule-table tbody tr:nth-child(odd) td{background:#fafbfc}
+        .schedule-table tbody tr:hover td{background:#f0f5f9}
+        .schedule-table tbody tr td strong{color:var(--brand);display:block;margin-bottom:4px}
+        .lesson-num{background:#f1f5f9;font-weight:700;text-align:center;width:50px;color:var(--brand)}
+        .break-cell{background:linear-gradient(135deg,var(--accent),#5dade2);color:#fff;font-weight:700;text-align:center}
+
+        /* Форма */
+        aside{padding:16px;background:#f9fafb;border-radius:6px;border:1px solid #e9eef2}
+        .field{margin-bottom:14px}
+        label{display:block;font-weight:700;margin-bottom:6px;color:var(--brand)}
+        input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:10px;border:1px solid #ccd6dd;border-radius:4px;font-family:Arial,sans-serif;box-sizing:border-box;font-size:0.95rem}
+        input[type="text"]:focus,input[type="email"]:focus,input[type="tel"]:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,152,219,0.1)}
+        textarea{resize:vertical;min-height:100px}
+        
+        .radio-group label,.checkbox-group label{display:flex;align-items:center;margin:8px 0;font-weight:400;cursor:pointer}
+        input[type="radio"],input[type="checkbox"]{margin-right:8px;cursor:pointer;width:16px;height:16px}
+        
+        input.error,select.error,textarea.error{border-color:#e74c3c!important;background:#fff5f5}
+        .error-msg{color:#e74c3c;font-size:0.85rem;margin-top:4px;display:none}
+        .error-msg.show{display:block}
+        .success-msg{background:#d4edda;color:#155724;padding:10px;border-radius:4px;border-left:4px solid #28a745;font-size:0.95rem}
+        
+        .actions{display:flex;gap:10px;align-items:center;margin-top:14px}
+        .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:5px;border:0;cursor:pointer;font-weight:600;transition:background 0.3s;font-size:0.95rem}
+        .btn:hover{background:#2980b9}
+        .btn.secondary{background:var(--muted)}
+        .btn.secondary:hover{background:#5a6c7d}
+
+        @media(max-width:760px){
+            .grid{grid-template-columns:1fr}
+            aside{margin-top:28px}
+            main{padding:12px}
+            header{padding:12px}
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Розклад </h1>
+    <p style="margin: 8px 0 0;color:#e6eef8;">Тижневий розклад</p>
+  </header>
+
+  <main>
+    <div class="grid">
+        <section aria-labelledby="schedule-heading">
+            <h2 id="schedule-heading">Тижневий розклад</h2>
+              <div class="table-wrap">
+                  <table class="schedule-table">
+                    <caption>Розклад занять</caption>
+                    <thead>
+                      <tr>
+                        <th>№</th>
+                        <th>День</th>
+                        <th>Час</th>
+                        <th>Предмет</th>
+                        <th>Викладач</th>
+                        <th>Аудиторія</th>
+                        <th>Перерва</th>
+                      </tr>
+                    </thead>
+                <tbody>
+                    <tr data-day="monday">
+                        <td data-label="№">1</td>
+                        <td data-label="День">Понеділок</td>
+                        <td data-label="Час">08:30–09:50</td>
+                        <td data-label="Предмет">Методика викладання інформатики</td>
+                        <td data-label="Викладач">Іваненко О.І.</td>
+                        <td data-label="Аудиторія">104</td>
+                        <td data-label="Перерва">20 хвилин</td>
+                    </tr>
+                    <tr data-day="monday">
+                        <td data-label="№">2</td>
+                        <td data-label="День">Понеділок</td>
+                        <td data-label="Час">10:10–11:30</td>
+                        <td data-label="Предмет">Педагогічні технології</td>
+                        <td data-label="Викладач">Петренко С.В.</td>
+                        <td data-label="Аудиторія">208</td>
+                    </tr>
+                    <tr data-day="tuesday">
+                        <td data-label="№">1</td>
+                        <td data-label="День">Вівторок</td>
+                        <td data-label="Час">08:30–09:50</td>
+                        <td data-label="Предмет">Теорія алгоритмів та основи програмування</td>
+                        <td data-label="Викладач">Коваленко М.П.</td>
+                        <td data-label="Аудиторія">209</td>
+                        <td data-label="Перерва">20 хвилин</td>
+                    </tr>
+                    <tr data-day="tuesday">
+                        <td data-label="№">2</td>
+                        <td data-label="День">Вівторок</td>
+                        <td data-label="Час">10:10–11:30</td>
+                        <td data-label="Предмет">Педагогічні технології</td>
+                        <td data-label="Викладач">Петренко С.В.</td>
+                        <td data-label="Аудиторія">205</td>
+                    </tr>
+                    <tr data-day="wednesday">
+                        <td data-label="№">1</td>
+                        <td data-label="День">Середа</td>
+                        <td data-label="Час">08:30–09:50</td>
+                        <td data-label="Предмет">Теорія алгоритмів та основи програмування</td>
+                        <td data-label="Викладач">Коваленко М.П.</td>
+                        <td data-label="Аудиторія">209</td>
+                        <td data-label="Перерва">20 хвилин</td>
+                    </tr>
+                    <tr data-day="wednesday">
+                        <td data-label="№">3</td>
+                        <td data-label="День">Середа</td>
+                        <td data-label="Час">12:00–13:20</td>
+                        <td data-label="Предмет">Методика викладання інформатики</td>
+                        <td data-label="Викладач">Іваненко О.І.</td>
+                        <td data-label="Аудиторія">104</td>                       
+                    </tr>
+                      
+                    <tr data-day="thursday">
+                        <td data-label="№">2</td>
+                        <td data-label="День">Четвер</td>
+                        <td data-label="Час">10:10–11:30</td>
+                        <td data-label="Предмет">Інтерактивні технології</td>
+                        <td data-label="Викладач">Гнатюк В.О.</td>
+                        <td data-label="Аудиторія">120</td>
+                    </tr>
+                    <tr data-day="friday">
+                        <td data-label="№">2</td>
+                        <td data-label="День">П'ятниця</td>
+                        <td data-label="Час">10:10–11:30</td>
+                        <td data-label="Предмет">Практика проведення уроків</td>
+                        <td data-label="Викладач">Мельник О.Р.</td>
+                        <td data-label="Аудиторія">130</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        </div>
+        <div class="pager">
+            <a class="btn secondary" href="resources.html">← Повернутися назад</a>
+            <a class="btn" href="feedback.html">Перейти до наступного →</a>
+        </div>
+
+
+        </body>
+    </html>

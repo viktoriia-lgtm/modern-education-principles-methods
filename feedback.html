@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Форма зворотного зв'язку</title>
+<style>
+        :root{--brand:#2c3e50;--accent:#3498db;--muted:#6c757d}
+        body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:18px;background:#f5f7fa;color:#222;line-height:1.6}
+        header{background:var(--brand);color:#fff;padding:18px;border-radius:6px;text-align:center;margin-bottom:18px}
+        header h1{margin:0 0 6px;font-size:1.5rem}
+        header p{margin:6px 0 0;color:#e6eef8;font-size:0.95rem}
+        main{max-width:1100px;margin:18px auto;background:#fff;padding:18px;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+        h2{margin:0 0 16px;color:var(--brand);border-bottom:3px solid var(--accent);padding-bottom:8px}
+        
+        .grid{display:grid;grid-template-columns:1fr;gap:28px}
+        @media(min-width:900px){.grid{grid-template-columns:1fr 360px}}
+        
+        .table-wrap{overflow:auto;border-radius:6px;border:1px solid #e1e4e8;background:#fff}
+        .schedule-table{border-collapse:collapse;width:100%;min-width:600px}
+        .schedule-table caption{caption-side:top;padding:10px 14px;font-weight:700;color:var(--brand);font-size:0.9rem}
+        .schedule-table th{background:#f1f5f9;padding:12px;text-align:left;border:1px solid #e6eef8;font-weight:700;color:var(--brand)}
+        .schedule-table td{padding:12px;border:1px solid #eef3f7;text-align:left}
+        .schedule-table tbody tr:nth-child(odd) td{background:#fafbfc}
+        .schedule-table tbody tr:hover td{background:#f0f5f9}
+        .schedule-table tbody tr td strong{color:var(--brand);display:block;margin-bottom:4px}
+        .lesson-num{background:#f1f5f9;font-weight:700;text-align:center;width:50px;color:var(--brand)}
+        .break-cell{background:linear-gradient(135deg,var(--accent),#5dade2);color:#fff;font-weight:700;text-align:center}
+
+        /* Форма */
+        aside{padding:16px;background:#f9fafb;border-radius:6px;border:1px solid #e9eef2}
+        .field{margin-bottom:14px}
+        label{display:block;font-weight:700;margin-bottom:6px;color:var(--brand)}
+        input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:10px;border:1px solid #ccd6dd;border-radius:4px;font-family:Arial,sans-serif;box-sizing:border-box;font-size:0.95rem}
+        input[type="text"]:focus,input[type="email"]:focus,input[type="tel"]:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,152,219,0.1)}
+        textarea{resize:vertical;min-height:100px}
+        
+        .radio-group label,.checkbox-group label{display:flex;align-items:center;margin:8px 0;font-weight:400;cursor:pointer}
+        input[type="radio"],input[type="checkbox"]{margin-right:8px;cursor:pointer;width:16px;height:16px}
+        
+        input.error,select.error,textarea.error{border-color:#e74c3c!important;background:#fff5f5}
+        .error-msg{color:#e74c3c;font-size:0.85rem;margin-top:4px;display:none}
+        .error-msg.show{display:block}
+        .success-msg{background:#d4edda;color:#155724;padding:10px;border-radius:4px;border-left:4px solid #28a745;font-size:0.95rem}
+        
+        .actions{display:flex;gap:10px;align-items:center;margin-top:14px}
+        .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:5px;border:0;cursor:pointer;font-weight:600;transition:background 0.3s;font-size:0.95rem}
+        .btn:hover{background:#2980b9}
+        .btn.secondary{background:var(--muted)}
+        .btn.secondary:hover{background:#5a6c7d}
+
+        @media(max-width:760px){
+            .grid{grid-template-columns:1fr}
+            aside{margin-top:28px}
+            main{padding:12px}
+            header{padding:12px}
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Форма зворотного зв'язку</h1>
+    <p style="margin: 8px 0 0;color:#e6eef8;">Ми цінуємо вашу думку!</p>
+  </header>
+ <aside aria-labelledby="feedback-heading">
+                <h2 id="feedback-heading">Форма зворотного зв'язку</h2>
+                <form id="feedbackForm" novalidate>
+                    <div class="field">
+                        <label for="name">ПІБ</label>
+                        <input id="name" name="name" type="text" required placeholder="Петро Петренко">
+                        <div class="error-msg" id="err-name"></div>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Електронна пошта</label>
+                        <input id="email" name="email" type="email" required placeholder="student@example.com">
+                        <div class="error-msg" id="err-email"></div>
+                    </div>
+
+                    <div class="field">
+                        <label for="course">Курс/Група</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Оберіть курс --</option>
+                            <option>Методика викладання інформатики</option>
+                            <option>Педагогічні технології</option>
+                            <option>Теорія алгоритмів та програмування</option>
+                            <option>Інтерактивні технології</option>
+                        </select>
+                        <div class="error-msg" id="err-course"></div>
+                    </div>
+
+                    <div class="field">
+                        <label>Тема звернення</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="topic" value="consultation" required> Консультація</label>
+                            <label><input type="radio" name="topic" value="question"> Питання по завданню</label>
+                            <label><input type="radio" name="topic" value="feedback"> Зворотний зв'язок</label>
+                            <label><input type="radio" name="topic" value="other"> Інше</label>
+                        </div>
+                        <div class="error-msg" id="err-topic"></div>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Текст звернення</label>
+                        <textarea id="message" name="message" required minlength="10" placeholder="Напишіть ваше питання або повідомлення..."></textarea>
+                        <div class="error-msg" id="err-message"></div>
+                    </div>
+
+                    <div class="field">
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="privacy" required>
+                            Я погоджуюсь на обробку персональних даних
+                        </label>
+                        <div class="error-msg" id="err-privacy"></div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn" type="submit">Надіслати</button>
+                        <button class="btn secondary" type="reset">Очистити</button>
+                    </div>
+
+                    <div id="formStatus"></div>
+                </form>
+            </aside>
+        </div>
+        <div class="pager">
+            <a class="btn secondary" href="schedule.html">← Повернутися назад</a>
+            <a class="btn" href="index.html">Перейти до наступного →</a>
+        </div>
+    </main>
+
+    <script>
+        (function(){
+            const form = document.getElementById('feedbackForm');
+            const status = document.getElementById('formStatus');
+
+            function setError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                const errorEl = document.getElementById('err-' + fieldId);
+                if (field) {
+                    field.classList.add('error');
+                    if (errorEl) {
+                        errorEl.textContent = message;
+                        errorEl.classList.add('show');
+                    }
+                }
+            }
+
+            function clearError(fieldId) {
+                const field = document.getElementById(fieldId);
+                const errorEl = document.getElementById('err-' + fieldId);
+                if (field) {
+                    field.classList.remove('error');
+                    if (errorEl) {
+                        errorEl.textContent = '';
+                        errorEl.classList.remove('show');
+                    }
+                }
+            }
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function validate() {
+                let isValid = true;
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const course = document.getElementById('course').value;
+                const topic = document.querySelector('input[name="topic"]:checked');
+                const message = document.getElementById('message').value.trim();
+                const privacy = document.querySelector('input[name="privacy"]').checked;
+
+                // Ім'я
+                clearError('name');
+                if (!name || name.length < 2) {
+                    setError('name', "Введіть ваше ім'я (не менше 2 символів)");
+                    isValid = false;
+                }
+
+                // Email
+                clearError('email');
+                if (!email || !validateEmail(email)) {
+                    setError('email', 'Вкажіть коректну електронну пошту');
+                    isValid = false;
+                }
+
+                // Курс
+                clearError('course');
+                if (!course) {
+                    setError('course', 'Оберіть курс');
+                    isValid = false;
+                }
+
+                // Тема
+                clearError('topic');
+                if (!topic) {
+                    const errorEl = document.getElementById('err-topic');
+                    if (errorEl) {
+                        errorEl.textContent = 'Оберіть тему звернення';
+                        errorEl.classList.add('show');
+                    }
+                    isValid = false;
+                } else {
+                    clearError('topic');
+                }
+
+                // Повідомлення
+                clearError('message');
+                if (!message || message.length < 10) {
+                    setError('message', 'Повідомлення має містити не менше 10 символів');
+                    isValid = false;
+                }
+
+                // Конфіденційність
+                clearError('privacy');
+                if (!privacy) {
+                    const errorEl = document.getElementById('err-privacy');
+                    if (errorEl) {
+                        errorEl.textContent = 'Потрібна ваша згода';
+                        errorEl.classList.add('show');
+                    }
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                status.innerHTML = '';
+
+                if (validate()) {
+                    const formData = {
+                        name: document.getElementById('name').value.trim(),
+                        email: document.getElementById('email').value.trim(),
+                        course: document.getElementById('course').value,
+                        topic: document.querySelector('input[name="topic"]:checked').value,
+                        message: document.getElementById('message').value.trim(),
+                        timestamp: new Date().toISOString()
+                    };
+
+                    try {
+                        const existing = JSON.parse(localStorage.getItem('feedback') || '[]');
+                        existing.push(formData);
+                        localStorage.setItem('feedback', JSON.stringify(existing));
+                    } catch (err) {
+                        console.error('LocalStorage error:', err);
+                    }
+
+                    form.reset();
+                    document.querySelectorAll('.error-msg').forEach(el => {
+                        el.textContent = '';
+                        el.classList.remove('show');
+                    });
+                    document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+                    status.innerHTML = '<div class="success-msg show">✓ Дякуємо! Ваше повідомлення надіслано (збережено локально).</div>';
+                    setTimeout(() => { status.innerHTML = ''; }, 5000);
+                } else {
+                    status.innerHTML = '<div style="color:#e74c3c;margin-top:12px">⚠ Виправте помилки у формі</div>';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

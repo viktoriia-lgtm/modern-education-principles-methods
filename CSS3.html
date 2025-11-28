@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основи CSS3 та Google Fonts</title>
+   <style> 
+   /* ========================================
+   ГЛОБАЛЬНІ СТИЛІ
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    font-size: 16px;
+}
+
+/* ========================================
+   HEADER: Заголовок сторінки
+   ======================================== */
+
+header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.header-subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   NAV: Навігаційне меню
+   ======================================== */
+
+nav {
+    background-color: #34495e;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+nav a:hover {
+    background-color: #2c3e50;
+    color: #3498db;
+    transform: scale(1.05);
+}
+
+/* ========================================
+   MAIN CONTAINER: Основний контент та Aside
+   ======================================== */
+
+.main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* ========================================
+   SECTION: Основний контент
+   ======================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+article section {
+    background: white;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+article section:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+article h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3498db;
+    line-height: 1.4;
+}
+
+article h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #34495e;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+article h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+article p {
+    margin-bottom: 18px;
+    text-align: justify;
+    line-height: 1.8;
+    color: #555;
+    font-size: 16px;
+}
+
+article strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+article em {
+    color: #3498db;
+    font-style: italic;
+}
+
+article ul, article ol {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+article li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #555;
+}
+
+article pre {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+article code {
+    background: #f4f4f4;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+}
+
+/* ========================================
+   ASIDE: Бічна панель
+   ======================================== */
+
+.sidebar {
+    flex: 0 0 300px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+    position: sticky;
+    top: 80px;
+}
+
+.sidebar h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+.sidebar h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #34495e;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.resource-list, .concept-list {
+    list-style: none;
+}
+
+.resource-list li, .concept-list li {
+    margin-bottom: 12px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.resource-list li::before, .concept-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.resource-list a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.resource-list a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+.sidebar-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ecf0f1;
+}
+
+.concept-list li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ========================================
+   FOOTER: Підвал сторінки
+   ======================================== */
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 3px solid #3498db;
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+footer p:first-child {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.footer-info {
+    color: #bdc3c7;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* ========================================
+   АДАПТИВНІСТЬ: Планшети (768px і менше)
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Header */
+    header {
+        padding: 35px 20px;
+    }
+    
+    header h1 {
+        font-size: 32px;
+    }
+    
+    .header-subtitle {
+        font-size: 16px;
+    }
+    
+    /* Navigation */
+    nav {
+        padding: 12px 0;
+    }
+    
+    nav a {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* Main Container - перехід на вертикальний макет */
+    .main-container {
+        flex-direction: column;
+        gap: 25px;
+        margin: 30px auto;
+    }
+    
+    /* Sidebar стає звичайною секцією */
+    .sidebar {
+        flex: 1;
+        position: static;
+        top: auto;
+    }
+    
+    /* Content */
+    article section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    article h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    
+    article h3 {
+        font-size: 20px;
+    }
+    
+    article p {
+        font-size: 15px;
+        text-align: left;
+    }
+    
+    article pre {
+        padding: 15px;
+        font-size: 12px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 25px 15px;
+    }
+    
+    footer p {
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   АДАПТИВНІСТЬ: Мобільні пристрої (480px і менше)
+   ======================================== */
+
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        padding: 25px 15px;
+    }
+    
+    header h1 {
+        font-size: 26px;
+        margin-bottom: 12px;
+        letter-spacing: 0px;
+    }
+    
+    .header-subtitle {
+        font-size: 14px;
+    }
+    
+    /* Navigation */
+    nav {
+        padding: 8px 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav a {
+        display: block;
+        padding: 12px 10px;
+        font-size: 13px;
+        border-bottom: 1px solid #2c3e50;
+    }
+    
+    nav a:hover {
+        background-color: #2c3e50;
+    }
+    
+    /* Main Container */
+    .main-container {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    /* Content */
+    article section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    article h2 {
+        font-size: 22px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+    }
+    
+    article h3 {
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    
+    article p {
+        font-size: 14px;
+        text-align: left;
+        line-height: 1.6;
+    }
+    
+    article ul, article ol {
+        margin-left: 20px;
+    }
+    
+    article pre {
+        padding: 12px;
+        font-size: 11px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        padding: 15px;
+    }
+    
+    .sidebar h3 {
+        font-size: 20px;
+    }
+    
+    .sidebar h4 {
+        font-size: 15px;
+    }
+    
+    .resource-list a {
+        font-size: 13px;
+    }
+    
+    .concept-list li {
+        font-size: 13px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 20px 10px;
+        margin-top: 30px;
+    }
+    
+    footer p {
+        font-size: 12px;
+    }
+    
+    .footer-info {
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   ДОДАТКОВІ СТИЛІ ДЛЯ ПЕЧАТКИ
+   ======================================== */
+
+@media print {
+    nav, footer {
+        display: none;
+    }
+    
+    .main-container {
+        max-width: 100%;
+    }
+    
+    article section {
+        page-break-inside: avoid;
+    }
+}
+    </style>
+    <!-- Підключення Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Підключення зовнішнього файлу стилів -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER: Заголовок сторінки -->
+    <header>
+        <h1>Основи CSS3 та Google Fonts</h1>
+        <p class="header-subtitle">Лабораторна робота з веб-програмування</p>
+    </header>
+    
+    <!-- NAV: Навігаційне меню -->
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#intro">Вступ</a></li>
+            <li><a href="#typography">Типографіка</a></li>
+            <li><a href="#flexbox">Flexbox</a></li>
+            <li><a href="#responsive">Адаптивність</a></li>
+            <li><a href="#resources">Ресурси</a></li>
+        </ul>
+    </nav>
+    
+    <!-- MAIN CONTAINER: Основний контент та бічна панель -->
+    <div class="main-container">
+        <!-- SECTION: Основний текстовий контент -->
+        <section class="main-content">
+            <article>
+                <!-- Розділ 1: Вступ -->
+                <section id="intro">
+                    <h2>Вступ до CSS3 та веб-дизайну</h2>
+                    <p>CSS3 – це сучасна версія мови каскадних таблиць стилів, яка забезпечує стилізацію веб-сторінок. Вона додає багато інновативних можливостей для створення привабливих та функціональних веб-інтерфейсів.</p>
+                </section>
+                
+                <!-- Розділ 2: Типографіка -->
+                <section id="typography">
+                    <h2>Типографіка та Google Fonts</h2>
+                    <p>Google Fonts надає безкоштовну бібліотеку висококвалітетних веб-шрифтів, які можна легко інтегрувати у веб-сайти. Це дозволяє дизайнерам та розробникам використовувати привабливі шрифти без збільшення розміру сторінки.</p>
+                    
+                    <h3>Особливості типографіки CSS3:</h3>
+                    <ul>
+                        <li><strong>color</strong> – встановлює колір тексту</li>
+                        <li><strong>font-size</strong> – визначає розмір шрифту</li>
+                        <li><strong>line-height</strong> – контролює висоту рядка (вертикальний інтервал)</li>
+                        <li><strong>text-align</strong> – вирівнює текст (left, center, right, justify)</li>
+                        <li><strong>font-family</strong> – вказує сімейство шрифту</li>
+                        <li><strong>font-weight</strong> – контролює товщину шрифту (400, 700, 900)</li>
+                    </ul>
+                    
+
+                </section>
+                
+                <!-- Розділ 3: Flexbox -->
+                <section id="flexbox">
+                    <h2>Створення гнучких макетів з Flexbox</h2>
+                    <p>Flexbox – це сучасний метод для створення адаптивних макетів у CSS. Він забезпечує простий та ефективний спосіб розташування елементів у контейнері.</p>
+                    
+                    <h3>Основні властивості Flexbox:</h3>
+                    <ul>
+                        <li><strong>display: flex</strong> – активує режим flex для контейнера</li>
+                        <li><strong>flex-direction</strong> – визначає напрямок (row, column)</li>
+                        <li><strong>justify-content</strong> – вирівнює елементи по головній осі</li>
+                        <li><strong>align-items</strong> – вирівнює елементи по поперечній осі</li>
+                        <li><strong>flex-wrap</strong> – дозволяє елементам переходити на новий рядок</li>
+                        <li><strong>gap</strong> – встановлює відстань між елементами</li>
+                    </ul>
+                    
+                    <h3>Структура макету:</h3>
+                    <p>На цій сторінці основний контент (ліворуч) та бічна панель (праворуч) розташовані за допомогою Flexbox. Основний контент займає 70% ширини, бічна панель – 30%.</p>
+                </section>
+                
+                <!-- Розділ 4: Адаптивність -->
+                <section id="responsive">
+                    <h2>Адаптивний дизайн та медіа-запити</h2>
+                    <p>Медіа-запити дозволяють адаптувати стилі під різні розмірори екрану та пристрої. Це гарантує, що сайт виглядає чудово на комп'ютерах, планшетах та смартфонах.</p>
+                    
+                    <h3>Точки перелому (Breakpoints):</h3>
+                    <ul>
+                        <li><strong>Desktop:</strong> більше ніж 768px – макет з основним контентом та бічною панеллю</li>
+                        <li><strong>Tablet:</strong> 481px–768px – перехідна версія з коригуванням розмірів</li>
+                        <li><strong>Mobile:</strong> менше ніж 480px – вертикальний макет, бічна панель під контентом</li>
+                    </ul>
+                    
+                    <h3>Приклад медіа-запиту:</h3>
+                    <pre><code>@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+  
+  .main-content,
+  .aside {
+    width: 100%;
+  }
+}</code></pre>
+                </section>
+            </article>
+        </section>
+        
+        <!-- ASIDE: Додаткова інформація та ресурси -->
+        <aside class="sidebar">
+            <h3>Корисні ресурси</h3>
+            <p class="subtitle">Рекомендовані посилання</p>
+            <ul class="resource-list">
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN: Документація CSS</a></li>
+                <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
+                <li><a href="https://www.w3schools.com/css/" target="_blank">W3Schools: CSS Tutorial</a></li>
+                <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS-Tricks: Flexbox Guide</a></li>
+            </ul>
+            
+            <div class="sidebar-section">
+                <h4>Ключові поняття</h4>
+                <ul class="concept-list">
+                    <li>Блокова модель (Box Model)</li>
+                    <li>Селектори CSS</li>
+                    <li>Специфічність</li>
+                    <li>Наслідування (Inheritance)</li>
+                    <li>Каскадність (Cascade)</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <div class="pager">
+            <a class="btn secondary" href="feedback.html">← Повернутися назад</a>
+            <a class="btn" href="index.html">Перейти до наступного →</a>
+        </div>
+        <footer>
+        <p>&copy; 2025 Основи CSS3 та Google Fonts</p>
+        </footer>
+</body>
+</html>

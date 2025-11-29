@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Графічні елементи - Основи програмування</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F4788;
+            background-color: #ECF0F1;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1F4788 0%, #00D4FF 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* ЛОГОТИП */
+        .logo-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section h2 {
+            color: #1F4788;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            border-bottom: 3px solid #3498DB;
+            padding-bottom: 15px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-item {
+            text-align: center;
+        }
+        
+        .logo-item h3 {
+            color: #00D4FF;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-item img,
+        .logo-item svg {
+            max-width: 100%;
+            height: auto;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            border: 2px solid #ECF0F1;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-item img:hover,
+        .logo-item svg:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-description {
+            color: #7F8C8D;
+            font-size: 0.95rem;
+            margin-top: 15px;
+        }
+        
+        /* БАНЕР */
+        .banner-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .banner-section h2 {
+            color: #2C3E50;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            border-bottom: 3px solid #3498DB;
+            padding-bottom: 15px;
+        }
+        
+        .banner-container {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+        
+        .banner-container svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16 / 9;
+        }
+        
+        .banner-description {
+            color: #7F8C8D;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        /* КНОПКИ */
+        .buttons-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .buttons-section h2 {
+            color: #2C3E50;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            border-bottom: 3px solid #3498DB;
+            padding-bottom: 15px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .button-item {
+            text-align: center;
+        }
+        
+        .button-item svg {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+        
+        .button-item svg:hover {
+            filter: brightness(1.1);
+        }
+        
+        /* ПОРІВНЯННЯ ФОРМАТІВ */
+        .formats-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .formats-section h2 {
+            color: #2C3E50;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            border-bottom: 3px solid #3498DB;
+            padding-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        table th {
+            background-color: #3498DB;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        table td {
+            border-bottom: 1px solid #ECF0F1;
+            padding: 12px 15px;
+        }
+        
+        table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .format-badge {
+            display: inline-block;
+            background-color: #3498DB;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        
+        .pros {
+            color: #27AE60;
+        }
+        
+        .cons {
+            color: #E74C3C;
+        }
+        
+        /* АДАПТИВНІСТЬ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+            }
+            
+            .button-item svg {
+                max-width: 280px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            table th, table td {
+                padding: 8px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+            
+            header p {
+                font-size: 0.95rem;
+            }
+            
+            .logo-section h2,
+            .banner-section h2,
+            .buttons-section h2,
+            .formats-section h2 {
+                font-size: 1.4rem;
+            }
+            
+            .button-item svg {
+                max-width: 200px;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            table th, table td {
+                padding: 6px 8px;
+            }
+        }
+        
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.95rem;
+        }
+        
+        .info-box {
+            background-color: #E8F4F8;
+            border-left: 4px solid #3498DB;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box strong {
+            color: #2C3E50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Графічні елементи для освітнього сайту</h1>
+        <p>Проєктування та інтеграція логотипу, банера та кнопок</p>
+    </header>
+    
+    <!-- ЛОГОТИП -->
+    <section class="logo-section">
+        <h2>1. ЛОГОТИП</h2>
+        
+        <div class="logo-container">
+            <div class="logo-item">
+                <h3>Логотип з текстом</h3>
+                <img src="D:\К-ПНУ\7 семестр\Web-програмування та web-сервіси в освітній діяльності\Лабораторні\methodology-site\логотип.png" alt="Логотип (png)" class="logo" style="width: 100%; max-width: 400px; height: auto;">
+            </div>
+            <div class="logo-item">
+                <h3>Іконка логотипу</h3>
+                <img src="D:\К-ПНУ\7 семестр\Web-програмування та web-сервіси в освітній діяльності\Лабораторні\methodology-site\іконка.png" alt="Іконка логотипу (png)" class="logo-icon" style="width: 100%; max-width: 200px; height: auto;">
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <strong>Порада:</strong> Експортуйте логотип у декількох розмірах (600x200, 300x100, 150x50 px) для різних контекстів використання.
+        </div>
+    </section>
+    
+    <!-- БАНЕР -->
+    <section class="banner-section">
+        <h2>2. БАНЕР </h2>
+        
+        <div class="banner-container">
+            <img src="D:\К-ПНУ\7 семестр\Web-програмування та web-сервіси в освітній діяльності\Лабораторні\methodology-site\банер.png" alt="Банер (png)" class="banner" style="width: 100%; max-width: 1920px; height: auto;">
+        </div>
+        
+        <div class="banner-description">
+            <p>
+                <strong>Параметри:</strong><br>
+                • Розмір: 1920x1080px (співвідношення 16:9)<br>
+                • Адаптивне масштабування для мобільних пристроїв<br>
+                • Фон: Лінійний градієнт від #2C3E50 до #3498DB<br>
+                • Декоративні елементи: Кола та логічні символи<br>
+                • Текст: "Математична Логіка" + підзаголовок<br>
+                <br>
+                <strong>Розміри файлів:</strong><br>
+                • PNG: 200-300 KB<br>
+                • JPG (оптимізований): 100-150 KB<br>
+                <br>
+                <strong>Рекомендація:</strong> Використовуйте JPG для вебу, щоб зменшити час завантаження сторінки.
+            </p>
+        </div>
+    </section>
+    
+    <!-- КНОПКИ -->
+    <section class="buttons-section">
+        <h2>3. ГРАФІЧНІ КНОПКИ</h2>
+        
+        <p style="text-align: center; color: #7F8C8D; margin-bottom: 40px;">
+            Набір трьох кнопок з єдиним стилем для основної навігації сайту
+        </p>
+        
+        <div class="buttons-container">
+            <div class="button-item">
+                <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#F16B62;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#E74C3C;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="buttonShadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <rect x="10" y="10" width="280" height="100" rx="15" fill="url(#buttonGradient)" filter="url(#buttonShadow)"/>
+                    <text x="150" y="75" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="Open Sans, Arial">Домашні завдання</text>
+                </svg>
+            </div>
+            
+            <div class="button-item">
+                <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="buttonGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2EBE6F;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#27AE60;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="buttonShadow2" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <rect x="10" y="10" width="280" height="100" rx="15" fill="url(#buttonGradient2)" filter="url(#buttonShadow2)"/>
+                    <text x="150" y="75" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="Open Sans, Arial">Література</text>
+                </svg>
+            </div>
+            
+            <div class="button-item">
+                <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="buttonGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B877D9;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#9B59B6;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="buttonShadow3" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <rect x="10" y="10" width="280" height="100" rx="15" fill="url(#buttonGradient3)" filter="url(#buttonShadow3)"/>
+                    <text x="150" y="75" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="Open Sans, Arial">Контакти</text>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <strong>Параметри кнопок:</strong><br>
+            • Розмір: 300x120px (адаптивні до мобільних 200x80px)<br>
+            • Форма: Прямокутник з заокругленими кутами (border-radius: 15px)<br>
+            • Ефект: Градієнт та тінь для об'єму<br>
+            • Шрифт: Open Sans Bold, 28px, білий<br>
+            • Розміри файлів: 15-25 KB (PNG), 5-10 KB (SVG)
+        </div>
+    </section>
+    
+    <!-- ПОРІВНЯННЯ ФОРМАТІВ -->
+    <section class="formats-section">
+        <h2>4. ПОРІВНЯННЯ ВЕФОРМАТІВ: JPEG, PNG, GIF</h2>
+        
+        <p style="margin-bottom: 30px; color: #7F8C8D;">
+            Аналіз різниці між основними графічними веб-форматами та рекомендації щодо вибору для кожного елемента
+        </p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Формат</th>
+                    <th>Компресія</th>
+                    <th>Прозорість</th>
+                    <th>Кількість кольорів</th>
+                    <th>Розмір файлу</th>
+                    <th>Найкраще для</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="format-badge">JPEG</span></td>
+                    <td>Втратна</td>
+                    <td>Ні</td>
+                    <td>16,7 млн</td>
+                    <td>20-100 KB</td>
+                    <td>Фотографії, градієнти, сложні зображення</td>
+                </tr>
+                <tr>
+                    <td><span class="format-badge">PNG</span></td>
+                    <td>Без втрат</td>
+                    <td>Так (8 або 32 біти)</td>
+                    <td>16,7 млн</td>
+                    <td>50-300 KB</td>
+                    <td>Логотипи, іконки, прозорість</td>
+                </tr>
+                <tr>
+                    <td><span class="format-badge">GIF</span></td>
+                    <td>Без втрат</td>
+                    <td>Так (1 бік)</td>
+                    <td>256</td>
+                    <td>10-200 KB</td>
+                    <td>Анімовані зображення, прості іконки</td>
+                </tr>
+                <tr>
+                    <td><span class="format-badge">SVG</span></td>
+                    <td>Векторна</td>
+                    <td>Так</td>
+                    <td>Необмежено</td>
+                    <td>5-50 KB</td>
+                    <td>Логотипи, іконки, масштабовані графіки</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3 style="color: #2C3E50; margin-top: 40px; margin-bottom: 20px;">Рекомендації для кожного елемента:</h3>
+        
+        <div style="display: grid; gap: 20px;">
+            <div class="info-box">
+                <strong>Логотип з текстом:</strong><br>
+                <span class="pros">✓ PNG</span> - Прозорий фон, без втрати якості, ідеально масштабується<br>
+                <span class="pros">✓ SVG</span> - Найкраще рішення, векторний формат, безмежне масштабування<br>
+                <span class="cons">✗ JPEG</span> - Немає прозорості, видні артефакти при компресії<br>
+                <span class="cons">✗ GIF</span> - Обмежена палітра кольорів (256)
+            </div>
+            
+            <div class="info-box">
+                <strong>Іконка логотипу:</strong><br>
+                <span class="pros">✓ PNG</span> - Малий розмір, чітка видимість навіть при малих розмірах<br>
+                <span class="pros">✓ SVG</span> - Оптимально для фавіконів, идеальна для всіх розмірів<br>
+                <span class="cons">✗ JPEG</span> - Невідповідний для простих графічних елементів
+            </div>
+            
+            <div class="info-box">
+                <strong>Банер (1920x1080px):</strong><br>
+                <span class="pros">✓ JPEG</span> - Добра компресія, менший розмір файлу (100-150 KB)<br>
+                <span class="pros">✓ PNG</span> - Краща якість, але більший розмір (200-300 KB)<br>
+                <span class="cons">✗ GIF</span> - Неминуче буде дуже великим файлом через кількість кольорів
+            </div>
+            
+            <div class="info-box">
+                <strong>Графічні кнопки:</strong><br>
+                <span class="pros">✓ PNG</span> - Прозорість, чіткі лінії, добрий для вебу<br>
+                <span class="pros">✓ SVG</span> - Найкраще рішення, безмежне масштабування, лічні взаємодіяння (hover)<br>
+                <span class="cons">✗ JPEG</span> - Видні артефакти, немає прозорості
+            </div>
+        </div>
+        
+        <h3 style="color: #2C3E50; margin-top: 40px; margin-bottom: 20px;">Загальні рекомендації з оптимізації:</h3>
+        
+        <ul style="color: #7F8C8D; line-height: 1.8; margin-left: 20px;">
+            <li><strong>Логотип:</strong> PNG (для вебу) + SVG (як основний формат для масштабування)</li>
+            <li><strong>Банер:</strong> JPEG з якістю 85-90% (кращий баланс якості та розміру)</li>
+            <li><strong>Кнопки:</strong> SVG (ідеальне масштабування) або PNG (для швидшого завантаження)</li>
+            <li><strong>Оптимізація розміру:</strong> Використовуйте TinyPNG/TinyJPG або ImageOptim</li>
+            <li><strong>Мобільна адаптивність:</strong> Завантажуйте менші версії для мобільних пристроїв</li>
+        </ul>
+            <a class="btn secondary" href="SCC3.html">← Повернутися назад</a>
+            <a class="btn" href="graphics-showcase.html">Перейти до наступного →</a>
+    </section>
+</body>
+</html>
